@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qiucode.dao.MenuDao">
+
+    <resultMap id="resultMenu" type="cn.qiucode.entity.Menu">
+        <id property="id" column="id" />
+        <result property="hrefName" column="url" />
+        <result property="name" column="menu_name" />
+        <result property="type" column="type" />
+        <result property="css" column="css" />
+        <result property="pid" column="pid" />
+        <result property="sort" column="sort" />
+        <result property="createTime" column="create_time" />
+        <result property="updateTime" column="update_time" />
+        <result property="status" column="status" />
+        <result property="remark" column="remark" />
+    </resultMap>
+
+    <!--开发sg_ 服务器qiu_-->
+    <select id="findPidMenu" resultMap="resultMenu">
+        select * from qiu_menu where pid=0 order by sort asc
+    </select>
+
+    <select id="findChildrenMenu" resultMap="resultMenu" parameterType="Integer">
+        select * from qiu_menu where pid=#{pid} order by sort asc
+    </select>
+
+    <select id="findMenuById" resultType="cn.qiucode.entity.Menu" parameterType="Integer">
+        select * from qiu_menu where id=#{id}
+    </select>
+
+    <!--获取菜单详细  用于编辑-->
+    <select id="findMenuByIdToEdit" resultType="cn.qiucode.entity.Menu" parameterType="Integer">
+        select sg.id,sg.url hrefName,sg.menu_name name,
+            (select menu_name from qiu_menu where id=sg.pid) pname,
+        sg.type,sg.status,sg.css,sg.pid,sg.sort,sg.remark from qiu_menu sg where sg.id=#{id}
+    </select>
+
+    <select id="findAllMenu" resultMap="resultMenu">
+        select * from qiu_menu order by sort asc
+    </select>
+
+    <insert id="addMenu" parameterType="cn.qiucode.entity.Menu">
+        insert into qiu_menu (url,menu_name,css,`type`,status,pid,sort,create_time,remark)
+        values (#{hrefName},#{name},#{css},#{type},#{status},#{pid},#{sort},#{createTime},#{remark})
+    </insert>
+
+    <update id="editMenu" parameterType="cn.qiucode.entity.Menu">
+        update qiu_menu set url=#{hrefName},menu_name=#{name},css=#{css},`type`=#{type},
+        `status`=#{status},sort=#{sort},remark=#{remark} where id=#{id}
+    </update>
+
+    <delete id="delMenu" parameterType="Integer">
+        delete from qiu_menu where id=#{id}
+    </delete>
+
+</mapper>

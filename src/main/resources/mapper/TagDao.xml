@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qiucode.dao.TagDao">
+
+    <resultMap id="resultTag" type="cn.qiucode.entity.Tag">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="articleNum" column="article_num" />
+        <!--<result property="count" column="count" />-->
+    </resultMap>
+
+    <!--开发sg_ 服务器qiu_-->
+    <select id="findAll" resultMap="resultTag">
+        select * from qiu_article_tag
+    </select>
+
+    <select id="findTagByName" parameterType="String" resultType="String">
+        select `name` from qiu_article_tag where `name`=#{name}
+    </select>
+
+    <update id="updateTagCount" parameterType="String">
+        update qiu_article_tag set article_num=article_num+1 where `name`=#{name}
+    </update>
+
+    <insert id="saveTag" parameterType="cn.qiucode.entity.Tag">
+        insert into qiu_article_tag (`name`,article_num) values (#{name},#{articleNum})
+    </insert>
+
+    <select id="findByIds" resultMap="resultTag" parameterType="String">
+        select * from qiu_article_tag where id in (${_parameter})
+    </select>
+
+</mapper>

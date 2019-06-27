@@ -1,0 +1,5 @@
+/*用户管理信息*/
+.layui-table,.layui-table th{ text-align:center; }
+.layui-form-switch{ margin-top:0; width: 54px; height: 24px; line-height: 24px; }
+.layui-elem-quote{ padding:10px 5px;margin: 10px 5px; }
+.layui-container{width: 100%;padding: 0 5px;}

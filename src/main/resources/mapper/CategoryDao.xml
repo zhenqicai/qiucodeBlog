@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qiucode.dao.CategoryDao">
+
+    <resultMap id="resultCategory" type="cn.qiucode.entity.Category">
+        <id property="id" column="id" />
+        <result property="name" column="title" />
+        <!--<result property="status" column="status" />
+        <result property="count" column="count" />-->
+    </resultMap>
+
+    <!--开发sg_ 服务器qiu_-->
+    <select id="findAll" resultMap="resultCategory">
+        select * from qiu_article_type where pid!=0
+    </select>
+
+    <!--<select id="findByIds" resultMap="resultTag" parameterType="String">
+        select * from sg_article_tag where id in (${_parameter})
+    </select>-->
+
+</mapper>

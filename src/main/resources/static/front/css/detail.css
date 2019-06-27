@@ -1,0 +1,256 @@
+/*留言板页面样式*/
+.blog_message_content{
+    margin-top: 80px;
+}
+.blog_message_content_left{padding: 5px 10px;   background-color: #fff; border: 1px solid #eee; margin-top: 10px;}
+.blog_message_content_left .message .message_submit{
+    margin: 10px 15px;
+    float: right;
+}
+.message_list{
+    clear: both;
+    margin: 0;
+}
+.message_list h2.mess_new{
+    font-size: 16px; font-weight: bold;
+    color: #000;
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #1AA195;
+}
+
+
+.message_parent{
+    border-bottom: 1px solid #eee;
+    margin:  5px 0;
+}
+.message_parent:hover{
+    background-color: #FCFCFC;
+}
+.message_parent_left{
+    text-align: center; padding: 5px 0;
+}
+.message_parent_left img{
+    width: 45px;
+    height: auto;
+    border-radius: 50px;
+}
+.message_parent_right{
+    padding-left: 10px;
+}
+.message_parent_right div{
+    margin: 5px 0;
+}
+.message_parent_right .top .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1AA195;
+}
+.message_parent_right .top .os {
+    font-size: 12px;
+    color: #1AA195;
+}
+.message_parent_right div.top .time{
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: red;
+}
+.message_parent_right .content {
+    color: #0a0a0a;
+    padding: 0 5px;
+}
+.message_parent_right .bottom span{
+    font-size: 12px;
+    margin-right: 20px;
+    margin-left: 5px;
+    color: #aaa;
+}
+.message_parent_right .bottom span:hover{
+    color: #0a0a0a;
+    cursor: pointer;
+}
+
+
+
+.message_children{
+    border-bottom: 1px solid #eee;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 40px;
+}
+.message_children:hover{
+    background-color: #FCFCFC;
+}
+.message_children_left{
+    text-align: center; padding: 5px 0;
+}
+.message_children_left img{
+    width: 45px;
+    height: auto;
+    border-radius: 50px;
+}
+.message_children_right{
+    padding-left: 10px;
+}
+.message_children_right div{
+    margin: 5px 0;
+}
+.message_children_right .top .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1AA195;
+}
+.message_children_right .top .os {
+    font-size: 12px;
+    color: #1AA195;
+}
+.message_children_right div.top .time{
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: red;
+}
+.message_children_right .content {
+    color: #0a0a0a;
+    padding: 0 5px;
+}
+.message_children_right .bottom span{
+    font-size: 12px;
+    margin-right: 20px;
+    margin-left: 5px;
+    color: #aaa;
+}
+.message_children_right .bottom span:hover{
+    color: #0a0a0a;
+    cursor: pointer;
+}
+
+.article-detail {
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 1px 8px #a6a6a6;
+    margin-bottom: 15px;
+}
+
+.article-detail-title {
+    text-align: center;
+    margin: 20px 0px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.article-detail-info {
+    font-size: 13px;
+    padding: 5px 0;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.article-detail-info span {
+    margin: 0 5px;
+}
+
+.article-detail-content {
+    padding: 10px 5px;
+    overflow: auto;
+}
+
+/**
+引入图标
+ */
+
+@font-face {font-family: "iconfont";
+    src: url('./../font/iconfont.eot?t=1477416582'); /* IE9*/
+    src: url('./../font/iconfont.eot?t=1477416582#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./../font/iconfont.woff?t=1477416582') format('woff'), /* chrome, firefox */
+    url('./../font/iconfont.ttf?t=1477416582') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('./../font/iconfont.svg?t=1477416582#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-zan:before { content: "\e612"; }
+.icon-jiazaizhong:before { content: "\e60e"; }
+.icon-sousuo:before { content: "\e621"; }
+.icon-quanpingpad:before { content: "\e61d"; }
+.icon-shezhi:before { content: "\e607"; }
+.icon-shijian:before { content: "\e60a"; }
+.icon-guanbi:before { content: "\e614"; }
+.icon-tianjia:before { content: "\e616"; }
+.icon-tuichu:before { content: "\e601"; }
+.icon-shui:before { content: "\e602"; }
+.icon-qq:before { content: "\e618"; }
+.icon-weibo:before { content: "\e617"; }
+.icon-tupian:before { content: "\e608"; }
+.icon-logo:before { content: "\e603"; }
+.icon-daima:before { content: "\e609"; }
+.icon-biaoqing:before { content: "\e60f"; }
+.icon-nan:before { content: "\e619"; }
+.icon-nv:before { content: "\e61a"; }
+.icon-quitquanping:before { content: "\e61e"; }
+.icon-zuichun:before { content: "\e61c"; }
+.icon-charushuipingxian:before { content: "\e622"; }
+.icon-yulan:before { content: "\e60d"; }
+.icon-liulanyanjing:before { content: "\e60b"; }
+.icon-touxiang:before { content: "\e604"; }
+.icon-caina:before { content: "\e613"; }
+.icon-room:before { content: "\e615"; }
+.icon-svgmoban53:before { content: "\e610"; }
+.icon-shichang:before { content: "\e600"; }
+.icon-shouye:before { content: "\e605"; }
+.icon-tishilian:before { content: "\e629"; }
+.icon-fabu:before { content: "\e606"; }
+.icon-pinglun:before { content: "\e60c"; }
+.icon-zan1:before { content: "\e611"; }
+.icon-chengshi:before { content: "\e61b"; }
+.icon-lianjie:before { content: "\e620"; }
+.icon-renshu:before { content: "\e61f"; }
+.icon-huizongzuoyoutuodong:before { content: "\e623"; }
+.icon-404:before { content: "\e627"; }
+.icon-wenda:before { content: "\e626"; }
+.icon-top:before { content: "\e624"; }
+.icon-ui:before { content: "\e625"; }
+
+/*代码区域*/
+pre {
+    background-color: #f5f5f5 !important;
+    border-radius: 0px !important;
+    border: 1px solid #ccc !important;
+    font-size: 13px !important;
+}
+@media (min-width: 200px) {
+    .input-div {
+        width: 125px;
+    }
+    .input-div-textarea {
+        width: 180px;
+    }
+}
+
+@media (min-width: 992px) {
+    .input-div {
+        width: 245px;
+    }
+    .input-div-textarea {
+        width: 900px;
+    }
+}
+/*.swipeboxEx img{*/
+/*cursor: pointer;*/
+/*transition: all 0.5s;*/
+/*}*/
+/*.swipeboxEx img:hover{*/
+/*transform: scale(1.5);*/
+/*}*/
+.photo-category{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:30px;
+    margin-left:-8px;
+}

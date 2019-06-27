@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qiucode.dao.ArticleDao">
+
+    <resultMap id="resultArticle" type="cn.qiucode.entity.Article">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="tags" column="tags" />
+        <result property="isReprint" column="is_reprint" />
+        <result property="typeid" column="typeid" />
+        <result property="remark" column="remark" />
+        <result property="author" column="author" />
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status" />
+        <result property="browsNum" column="brows_num" />
+        <result property="comments" column="comments"/>
+        <result property="userId" column="user_id"/>
+        <result property="likeNum" column="like_num"/>
+        <result property="isTop" column="is_top"/>
+        <result property="coverImage" column="cover_image" />
+        <result property="category" column="category"/>
+        <result property="isNew" column="is_new"/>
+        <result property="isRecommend" column="is_recommend"/>
+    </resultMap>
+
+    <!--在mapper文件中的头部引入缓存策略-->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+
+    <!--<select id="getAuthor" resultType="com.zhenqi.entity.User" parameterType="Long">
+        SELECT * FROM tb_user WHERE id=#{author_id}
+    </select>
+
+    <select id="getCategory" resultType="com.zhenqi.entity.Category" parameterType="Long">
+        SELECT * FROM tb_category WHERE id=#{category_id}
+    </select>-->
+
+    <!--<select id="findArticleById" resultType="com.zhenqi.entity.Article" parameterType="Long">
+        SELECT * FROM zq_article WHERE id=#{id}
+    </select>-->
+
+    <!--开发sg_article2  服务器qiu_article-->
+    <select id="articleCount" resultType="Integer">
+        select count(1) from qiu_article where status=1
+    </select>
+
+    <!-- datediff(now(),sa.create_time)<=3 -->
+    <select id="findAll" resultMap="resultArticle">
+        SELECT st.title category,sa.*,
+        (case datediff(now(),sa.create_time)&lt;=3 when 1 then 'new' else 'old' end) is_new
+        FROM qiu_article sa inner join qiu_article_type st on sa.typeid=st.id
+        where sa.status=1 order by sa.is_top desc,sa.create_time desc limit #{pageNow},#{pageSize}
+    </select>
+
+    <select id="getHotArticle" resultMap="resultArticle">
+        select * from qiu_article where status=1 order by `brows_num` desc limit 0,5
+    </select>
+
+    <select id="findArticleById" resultType="cn.qiucode.entity.Article" parameterType="Integer">
+        SELECT * FROM qiu_article WHERE id=#{id}
+    </select>
+
+    <update id="updateBrows" parameterType="Integer">
+        update qiu_article set brows_num=brows_num+1 where id=#{id}
+    </update>
+
+
+    <update id="updateCommonts" parameterType="Integer">
+        update qiu_article set comments=comments+1 where id=#{id}
+    </update>
+
+    <insert id="addArticle" parameterType="cn.qiucode.entity.Article">
+        insert into qiu_article (
+        title,
+        content,
+        remark,
+        tags,
+        typeid,
+        cover_image,
+        is_reprint,
+        author,
+        status,
+        brows_num,
+        comments,
+        like_num,
+        is_top,
+        create_time)
+        values (
+        #{title},
+        #{content},
+        #{remark},
+        #{tags},
+        #{typeid},
+        #{coverImage},
+        #{isReprint},
+        #{author},
+        #{status},
+        #{browsNum},
+        #{comments},
+        #{likeNum},
+        #{isTop},
+        #{createTime})
+    </insert>
+
+
+    <!--<select id="findArticleByViews" resultMap="resultArticle">
+        SELECT  * FROM tb_blog ORDER BY views desc limit 0,5
+    </select>
+
+    <select id="findArticleByCreatd" resultMap="resultArticle">
+        SELECT * FROM tb_blog ORDER BY create_at desc limit 0,5
+    </select>-->
+
+</mapper>

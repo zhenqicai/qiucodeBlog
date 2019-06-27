@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache >
+    <diskStore path="java.io.tmpdir/qiucodeCache" />
+    <defaultCache eternal="false" maxElementsInMemory="1000"
+                  overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
+                  timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" />
+    <!--<cache name="articlesList"
+           eternal="false"
+           maxElementsInMemory="100"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LRU" />-->
+    <!-- 博客文章列表缓存 -->
+    <cache name="articlesList"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="43200"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <!--文章总数-->
+    <!--<cache name="articleCount"
+           maxElementsInMemory="100"
+           eternal="true"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>-->
+
+    <!-- 博客文章详情缓存 -->
+    <cache name="articlesDetail"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="43200"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+    <!--文章浏览数-->
+    <cache name="articleBrowsNum"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="180"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+
+    <!-- hotArticles缓存 缓存中对象为永久的 -->
+    <cache name="hotArticles"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="1800"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+
+    <!-- categoryList缓存 缓存中对象为永久的 -->
+    <cache name="categoryList"
+           maxElementsInMemory="100"
+           eternal="true"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <!-- tagList缓存 缓存中对象为永久的 -->
+    <cache name="tagList"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <!-- 博客文章详情缓存 -->
+    <cache name="messagesList"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="43200"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="articleMmessagesList"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="43200"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+
+</ehcache>
