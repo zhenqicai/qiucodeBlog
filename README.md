@@ -1,0 +1,2 @@
+# qiucodeBlog
+一个基于Springboot2.x的个人博客,ORM框架使用的是Mybatis，前端渲染模板引擎使用的是Freemarker，前端UI框架使用的是Layui，数据库使用的是Mysql5.6.x，图片存储在阿里云OSS上，全文搜索引擎使用Luncene。
