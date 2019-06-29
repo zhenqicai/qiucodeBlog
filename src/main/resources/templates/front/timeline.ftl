@@ -39,63 +39,76 @@
                 <ul class="event_year">
                     <li class="current"><label for="2019">2019</label></li>
                     <li><label for="2018">2018</label></li>
-
-                    <#--<li><label for="2012">2012</label></li>-->
                 </ul>
                 <ul class="event_list">
                     <div>
-                                                <h3 id="2019">2019</h3>
-                                                                                                    <li>
-                                                                                                        <span>04月25日</span>
-                                   <p><span>时间过得好快，因为最近很忙，以至于很多功能还未实现，现先将整个网站的架构改成Springboot，ORM还是使用Mybatis，前端
-模板渲染引擎还是Freemarker，前端UI库还是Layui库，后续也会将现有的缓存Ehcache改成redis缓存。</span></p>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                     <span>01月31日</span>
-                          <p><span>晌午时分，阴，饭后去会了多年未见的大佬，但第一眼见时，其已添了不少白发，或许是思绪太多吧！</span></p>
+                        <h3 id="2019">2019</h3>
+                        <li>
+                            <span>06月27日</span>
+                            <p>
+                                <span>qiucode.cn(秋码分享)现已开源，源于开源，现回馈于开源。
+                                   Github地址： <a href="https://github.com/zhenqicai/qiucodeBlog" target="_blank">https://github.com/zhenqicai/qiucodeBlog</a>
+                                   码云地址： <a href="https://gitee.com/zhenqi/qiucodeBlog" target="_blank">https://gitee.com/zhenqi/qiucodeBlog</a>
+                                </span>
+                            </p>
+                        </li>
+                        <li>
+                            <span>04月25日</span>
+                            <p>
+                                <span>时间过得好快，因为最近很忙，以至于很多功能还未实现，现先将整个网站的架构改成Springboot，ORM还是使用Mybatis，前端
+模板渲染引擎还是Freemarker，前端UI库还是Layui库，后续也会将现有的缓存Ehcache改成redis缓存。
+                                </span>
+                            </p>
+                        </li>
+                        <li>
+                            <span>01月31日</span>
+                            <p>
+                                <span>晌午时分，阴，饭后去会了多年未见的大佬，但第一眼见时，其已添了不少白发，或许是思绪太多吧！</span>
+                            </p>
                         </li>
 
 
 
-                                                 <li>
-                                                     <span>01月01日</span>
-                          <p><span>2018已然过去，不管在2018有没有实现你的愿望，反正2019已经到来了，那就把2018没实现的
-放在2019去实现吧！元旦快乐！</span></p>
+                        <li>
+                            <span>01月01日</span>
+                            <p>
+                                <span>2018已然过去，不管在2018有没有实现你的愿望，反正2019已经到来了，那就把2018没实现的
+放在2019去实现吧！元旦快乐！</span>
+                            </p>
                         </li>
-                                         </div>
+
+                    </div>
+
                     <div>
-                       
-
                         <h3 id="2018">2018</h3>
-                           <li>
-                             <span>10月30日</span>
+                        <li>
+                            <span>10月30日</span>
                             <p><span>你瞧这些云聚了又散，散了又聚，人生离合，亦复如斯。--《神雕侠侣》</span></p>
-                           </li>
+                        </li>
 
-                                                      <li>
-                                                        <span>10月28日</span>
+                        <li>
+                            <span>10月28日</span>
                             <p><span>秋码微信小程序上线，界面有待后续优化。。。</span></p>
                         </li>
 
-                            <li>
-                               <span>10月21日</span>
+                        <li>
+                            <span>10月21日</span>
                             <p><span>免费体验服务器结束之际，迁移到新服务器，增加了缓存</span></p>
                         </li>
 
-                          <li>
-                              <span>10月14日</span>
+                        <li>
+                            <span>10月14日</span>
                             <p><span>天气阴，貌似要下雨，却始终没有下！   晚间时分，全站配置https</span></p>
                         </li>
 
-                           <li>
-                              <span>10月13日</span>
+                        <li>
+                            <span>10月13日</span>
                             <p><span>注册了域名：qiucode.cn </span></p>
                         </li>
 
                         <li>
                             <span>10月6日</span>
                             <p><span>秋码个人技术网站上线了<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1535176231879&amp;di=2fe344b5ceb8aba301eefc07adaf3126&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170222%2Fa51ea74b22c344c2b6ebb4a9c623f3e9.gif"></span>
-
                             </p>
                         </li>
                         <li>
@@ -106,7 +119,6 @@
                             <span>10月1日</span>
                             <p><span>普天同庆，祝愿我们的祖国更加繁荣昌盛！</span></p>
                         </li>
-
                     </div>
                 </ul>
                 <div class="clearfix"></div>

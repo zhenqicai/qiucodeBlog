@@ -1,3 +1,4 @@
+
 .text-center {
     text-align: center;
 }
@@ -115,7 +116,57 @@
     text-align: center;
 }
 
+.qiu-github{
+    position: absolute;
+    background: #ecf0f5;
+    color: #da5050;
+    font-size: 24px;
+    display: inline-block;
+    height: 125px;
+    width: 32px;
+    transform: rotate(45deg);
+    /* -webkit-transform: rotate(-45deg); */
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    top: -30px;
+}
+.qiu-github c{
+    position: absolute;
+    top: 45px;
+    right: -20px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    /* bottom: 0; */
+    /*width: 100%;*/
+    text-align: center;
+}
 
+.qiu-gitee{
+    position: absolute;
+    background: #ecf0f5;
+    color: #ce1717;
+    font-size: 24px;
+    display: inline-block;
+    height: 125px;
+    width: 32px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    top: -30px;
+    right: -30px;
+}
+.qiu-gitee c {
+    position: absolute;
+    top: 45px;
+    right: -12px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+   /* width: 100%;*/
+    text-align: center;
+}
 
 .fly-search .icon-sousuo {
     position: absolute;

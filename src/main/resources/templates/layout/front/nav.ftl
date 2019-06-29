@@ -4,6 +4,16 @@
     <#--<a href="/QQ/qqLogin" class="blog-user">
         <i class="fa fa-qq"></i>
     </a>-->
+        <a href="https://github.com/zhenqicai/qiucodeBlog" target="_blank">
+            <span class="qiu-github"><c>Github</c></span>
+            <#--<img style="position: absolute; top: 0; left: 0; border: 0;" src="http://itmuch.com/img/fork-me.png" alt="Fork me on GitHub">-->
+        </a>
+
+        <a href="https://gitee.com/zhenqi/qiucodeBlog" target="_blank">
+            <span class="qiu-gitee"><c>gitee</c></span>
+        <#--<img style="position: absolute; top: 0; left: 0; border: 0;" src="http://itmuch.com/img/fork-me.png" alt="Fork me on GitHub">-->
+        </a>
+
         <a class="blog-logo" href="/">秋码</a>
         <ul class="layui-nav" lay-filter="nav">
             <li class="layui-nav-item ">
