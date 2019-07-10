@@ -1,4 +1,4 @@
-package cn.qiucode.service;
+﻿package cn.qiucode.service;
 
 import cn.qiucode.entity.Article;
 import cn.qiucode.utils.Page;
@@ -17,6 +17,15 @@ public interface ArticleService {
      * @return
      */
     public Page<Article> findAll(int pageNow, int pageSize);
+
+    /**
+     * 根据关键词进行全文搜索
+     * @param keyword
+     * @param pageNow
+     * @param pageSize
+     * @return
+     */
+    public Page<Article> search(String keyword,int pageNow,int pageSize);
 
     //获取文章总数
     @Deprecated

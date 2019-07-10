@@ -6,6 +6,7 @@ import cn.qiucode.entity.Article;
 import cn.qiucode.service.ArticleService;
 import cn.qiucode.utils.Page;
 import cn.qiucode.utils.RelativeDateFormat;
+import cn.qiucode.utils.search.LuceneIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -23,6 +24,8 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleDao articleDao;
     @Autowired
     private TagDao tagDao;
+    @Autowired
+    private LuceneIndex luceneIndex;
 
 
     //@Override
@@ -72,6 +75,11 @@ public class ArticleServiceImpl implements ArticleService {
     //@Override
     @CacheEvict(value = "articlesList", allEntries = true, beforeInvocation = true)
     public boolean addArticle(Article article){
+        try{
+            luceneIndex.addIndex(article);
+        }catch(Exception e){
+            System.out.println("添加索引出错了！");
+        }
         return articleDao.addArticle(article);
     }
 
@@ -93,6 +101,27 @@ public class ArticleServiceImpl implements ArticleService {
     //@CacheEvict(value = "articlesList", allEntries = true, beforeInvocation = true)
     public int getArticleCount() {
         return articleDao.articleCount();
+    }
+
+
+   @Override
+    public Page<Article> search(String keyWord, int pageNow, int pageSize) {
+       try{
+           int startLimit=(pageNow-1)*pageSize;
+           List<Article> artList=luceneIndex.searchArticle(keyWord);
+            
+           int totalCount=getArticleCount();//artList.size();
+           int totalPage=(totalCount % pageSize == 0) ? (totalCount/pageSize) : (totalCount/pageSize)+1;
+           Page<Article> page=new Page<Article>();
+           page.setData(artList);
+           page.setTotalPage(totalPage);
+           page.setCurrentPage(pageNow);
+           
+           return page;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

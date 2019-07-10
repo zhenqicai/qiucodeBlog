@@ -1,4 +1,4 @@
-package cn.qiucode.controller;
+﻿package cn.qiucode.controller;
 
 
 import cn.hutool.extra.servlet.ServletUtil;
@@ -262,6 +262,34 @@ public class ArticleController {
             result.put("msg","出现错误，请联系管理员");
         }
         return result;
+    }
+
+  /**
+     * 全文检索
+     * @param keyWord
+     * @param pageIndex
+     * @param model
+     * @return
+     */
+    @RequestMapping("/search")
+    @ResponseBody
+    public Page<Article>  search(@RequestParam(required = false, value = "keyWord") String keyWord,
+                                  @RequestParam(required = false, value = "pageSize") Integer pageSize,
+                                  @RequestParam(required = false, value = "pageIndex") Integer pageIndex,
+                                  ModelMap model){
+        if ("".equals(pageIndex) || null == pageIndex) {
+            pageIndex = 1;
+        }
+        if ("".equals(pageSize) || null == pageSize) {
+            pageSize = 10;
+        }
+
+        if("".equals(keyWord) || null==keyWord){
+            return new Page<Article>();
+        }
+        Page<Article> page=articleService.search(keyWord,pageIndex,pageSize);
+
+        return page;
     }
 
 }

@@ -114,3 +114,4 @@
 <script src="/static/front/js/hc-sticky.min.js"></script>
 <!-- 全局脚本 -->
 <script src="/static/front/js/global.js"></script>
+<script src="/static/front/js/search.js"></script>
