@@ -1,0 +1,68 @@
+server:
+   port: 8080
+   max-http-header-size: 8192
+   compression:
+      min-response-size: 512
+      enabled: true
+      mime-types: text/html,text/css,text/javascript,application/javascript,image/gif,image/png,image/jpg
+  #undertow:
+   #  io-threads: 4
+   #  worker-threads: 10
+   #  buffer-size: 16384
+   #  accesslog:
+   #     enabled: false
+   #     pattern: combined
+   tomcat:
+      maxThreads: 10
+      minSpareThreads: 3
+spring:
+   datasource:
+      type: org.apache.commons.dbcp2.BasicDataSource
+      url: jdbc:mysql://localhost:3306/qiucodeblog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: #生产环境的数据库密码
+      driver-class-name: com.mysql.jdbc.Driver
+      dbcp2:
+        #initial-size: 50
+        #max-active: 200
+        #max-idle: 50
+        #min-idle: 5
+        #max-wait-millis: 10000
+        validation-query: SELECT 1
+        #connection-properties: UTF-8
+        test-on-borrow: false
+        test-while-idle: true
+        time-between-eviction-runs-millis: 3600000
+   freemarker:
+      suffix: .ftl
+      template-loader-path:
+         - classpath:/templates
+      cache: false
+      charset: UTF-8
+      content-type: text/html
+   mvc:
+     favicon:
+        enabled: false
+     static-path-pattern: /static/**
+   cache:
+     ehcache:
+       config:  classpath:ehcache.xml
+   mail:
+       host: smtp.163.com
+       username: emple_3usoft@163.com
+       password: #授权第三方登录的授权码
+       protocol: smtp
+       properties.mail.smtp.auth: true
+       properties.mail.smtp.port: 994 #465或者994
+       #properties.mail.display.sendmail: Javen
+       #properties.mail.display.sendname: Spring Boot Guide Email
+       properties.mail.smtp.starttls.enable: true
+       properties.mail.smtp.starttls.required: true
+       properties.mail.smtp.ssl.enable: true
+       default-encoding: utf-8
+       from: emple_3usoft@163.com
+mybatis:
+   mapper-locations: classpath:mapper/*.xml
+   type-aliases-package: cn.qiucode.entity
+qiucode:
+   lucene-index-path: #生产环境存放Lucene索引的路径

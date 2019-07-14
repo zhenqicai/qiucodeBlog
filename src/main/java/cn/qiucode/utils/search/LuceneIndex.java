@@ -33,17 +33,15 @@ import java.util.List;
 public class LuceneIndex {
     private Directory dir=null;
 
+    @Value("${qiucode.lucene-index-path}")
+    private String luceneIndexPath;
     /**
      * 获取IndexWriter实例
      * @return
      * @throws Exception
      */
     private  IndexWriter getWriter()throws Exception{
-        /**
-         * 生成的索引我放在了C盘，可以根据自己的需要放在具体位置
-         */
-        dir= FSDirectory.open(Paths.get("E:/testLucene2"));
-        //dir= FSDirectory.open(Paths.get("/home/qiucodeLucene/"));
+        dir= FSDirectory.open(Paths.get(luceneIndexPath));
         SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();
         IndexWriterConfig iwc=new IndexWriterConfig(analyzer);
         IndexWriter writer=new IndexWriter(dir, iwc);
@@ -123,8 +121,7 @@ public class LuceneIndex {
         /**
          * 注意的是查询索引的位置得是存放索引的位置，不然会找不到。
          */
-        dir= FSDirectory.open(Paths.get("E://testLucene2"));
-        //dir= FSDirectory.open(Paths.get("/home/qiucodeLucene/"));
+        dir= FSDirectory.open(Paths.get(luceneIndexPath));
         IndexReader reader = DirectoryReader.open(dir);
         IndexSearcher is=new IndexSearcher(reader);
         BooleanQuery.Builder booleanQuery = new BooleanQuery.Builder();
