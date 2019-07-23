@@ -9,4 +9,6 @@ import cn.qiucode.entity.AdminUser;
 public interface AdminUserService {
 
     public AdminUser findOne(String username, String password);
+
+    public AdminUser findByName(String username);
 }

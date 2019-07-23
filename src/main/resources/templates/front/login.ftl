@@ -112,6 +112,7 @@
     </header>
     <div class="blog-login-main">
         <form action="" class="layui-form" method="post">
+            <input name="key" type="hidden" value="${key}"/>
             <div class="layui-form-item">
                 <label class="blog-login-icon">
                     <i class="layui-icon"></i>
@@ -136,6 +137,7 @@
     </div>
 </div>
 <script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/admin/js/crypto-js.js" charset="utf-8"></script>
 <script>
     var $,layer;
     layui.use(['layer', 'form'], function () {
@@ -154,8 +156,15 @@
         });
         var errorCount = 0;
         form.on('submit(login)', function (data) {
+            debugger
             if (errorCount > 5) {
             }else{
+                var key = CryptoJS.enc.Utf8.parse(data.field.key);
+                var password = CryptoJS.enc.Utf8.parse(data.field.password);
+                var encrypted = CryptoJS.AES.encrypt(password, key, {mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7});
+                var encryptedPwd = encrypted.toString();
+
+                data.field.password=encryptedPwd;
                 submit($,data.field);
             }
             return false;
@@ -171,7 +180,8 @@
      */
     function submit($,params)
     {
-        $.post("/admin/login",params,function (res) {
+        debugger
+        $.post("/login",params,function (res) {
             if (res.code ==1)
             {
                 layer.msg(res.msg,{icon:1,time:1000},function (index) {

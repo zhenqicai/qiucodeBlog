@@ -12,5 +12,9 @@
     <select id="findOne" resultMap="resultAdminUser">
         select * from qiu_admin where username=#{username} and password=#{password} and status=1
     </select>
+    <select id="findByName" resultType="cn.qiucode.entity.AdminUser">
+        select * from qiu_admin where username=#{username}  and status=1
+    </select>
+
 
 </mapper>

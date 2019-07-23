@@ -21,4 +21,8 @@ public class AdminUserServiceImpl implements AdminUserService {
         password= MD5util.md5(password);
         return adminUserDao.findOne(username,password);
     }
+    @Override
+    public AdminUser findByName(String username){
+        return adminUserDao.findByName(username);
+    }
 }

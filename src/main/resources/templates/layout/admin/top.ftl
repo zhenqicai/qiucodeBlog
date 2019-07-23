@@ -1,7 +1,7 @@
 <!-- 顶部 -->
 <div class="layui-header header">
     <div class="layui-main">
-        <a href="#" class="logo">秋码博客</a>
+        <a href="#" class="logo">旧时光</a>
         <!-- 显示/隐藏菜单 -->
         <a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
         <!-- 顶部右侧菜单 -->
@@ -63,7 +63,7 @@
 
 <!-- 底部 -->
 <div class="layui-footer footer">
-    <p>copyright @2018 秋码博客后台管理　　</p>
+    <p>copyright @2017 时光博客后台管理　　</p>
 </div>
 
 <!-- 移动导航 -->

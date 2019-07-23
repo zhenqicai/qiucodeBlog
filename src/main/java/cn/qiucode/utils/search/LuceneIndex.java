@@ -111,7 +111,7 @@ public class LuceneIndex {
         writer.close();
     }
 
-    /**
+    /**=======
      * 查询用户
      * @param keyWord 查询关键字
      * @return

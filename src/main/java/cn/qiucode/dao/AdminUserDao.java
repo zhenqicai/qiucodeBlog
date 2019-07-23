@@ -18,4 +18,6 @@ public interface AdminUserDao {
      * @return
      */
     public AdminUser findOne(@Param("username") String username, @Param("password") String password);
+
+    public AdminUser findByName(String username);
 }
