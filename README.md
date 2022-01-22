@@ -1,4 +1,4 @@
-# qiucodeBlog
+# qiucodeBlog个人博客
 
 #### 介绍
 一个基于Springboot2.x的个人博客,ORM框架使用的是Mybatis，前端渲染模板引擎使用的是Freemarker，前端UI框架使用的是Layui，数据库使用的是Mysql5.6.x，图片存储在阿里云OSS上，全文搜索引擎使用Luncene。鄙人小站：[https://www.qiucode.cn/](https://www.qiucode.cn/) 
@@ -38,11 +38,7 @@ JDK版本： jdk1.7+
    同样是在该包下的ArticcleController类的upload（）方法（用于在后台管理系统发布文章时上传图片到阿里云OSS）可将相应的注释打开和阿里云OSS 
    相关的注释起来！我相信很少有人会详细把它看完！
 
-#### 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
 
 #### 参与贡献
 
@@ -51,12 +47,3 @@ JDK版本： jdk1.7+
 3. 提交代码
 4. 新建 Pull Request
 
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

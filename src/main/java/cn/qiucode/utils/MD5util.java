@@ -1,5 +1,7 @@
 package cn.qiucode.utils;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.util.StringUtils;
 
 import java.math.BigInteger;
@@ -41,7 +43,18 @@ public class MD5util {
         return md5(md5(salt + md5(input+salt)));
     }
 
-    public static void main(String [] args){
-        System.out.println(md5("123456"));//UUKHSDDI5KPA43A8VL06V0TU2
+    private static String algorithmName = "md5";
+    private static int hashIterations = 2;
+    private static String salt = "123456";
+
+
+    public static String encrypt(String str,String salt, String algorithmName, int hashIterations) {
+        return new SimpleHash(algorithmName,str, ByteSource.Util.bytes(salt),hashIterations).toString();
     }
+    //控制台输出的字符串替换数据库中password
+    public static void main(String [] args){
+        String pwd=encrypt("123456","admin"+salt,algorithmName,hashIterations);
+        System.out.println(pwd);
+    }
+
 }

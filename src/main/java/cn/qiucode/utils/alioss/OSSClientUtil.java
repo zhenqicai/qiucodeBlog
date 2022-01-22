@@ -19,15 +19,15 @@ import java.util.Random;
  * Created by wuming on 2019/4/26.
  */
 
-@Component
+//@Component   // 如果是本地运行  注释这个注解  否则会报错
 public class OSSClientUtil {
 
     private static final Log log = LogFactory.getLog(OSSClientUtil.class);
     // endpoint以杭州为例，其它region请按实际情况填写
-    private String endpoint = //"您的endpoint";
+    private String endpoint = "";//"您的endpoint";
     // accessKey
-    private  String accessKeyId = //"您的accessKeyId";
-    private  String accessKeySecret = //"您的accessKeySecret";
+    private  String accessKeyId = "";//"您的accessKeyId";
+    private  String accessKeySecret = "";//"您的accessKeySecret";
     //空间
     private  String bucketName = "zhenqioss";
     //文件存储目录

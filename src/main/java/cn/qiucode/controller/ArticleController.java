@@ -1,4 +1,4 @@
-ï»¿package cn.qiucode.controller;
+package cn.qiucode.controller;
 
 
 import cn.hutool.extra.servlet.ServletUtil;
@@ -12,7 +12,7 @@ import cn.qiucode.service.MessageService;
 import cn.qiucode.service.TagService;
 import cn.qiucode.utils.MapCache;
 import cn.qiucode.utils.Page;
-import cn.qiucode.utils.alioss.OSSClientUtil;
+//import cn.qiucode.utils.alioss.OSSClientUtil;
 import cn.qiucode.utils.watermarker.WordWaterMarker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.tautua.markdownpapers.Markdown;
-import org.tautua.markdownpapers.parser.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -48,8 +46,8 @@ public class ArticleController {
     @Autowired
     private TagService tagService;
 
-    @Autowired
-    private OSSClientUtil ossClientUtil;
+//    @Autowired
+//    private OSSClientUtil ossClientUtil;
 
     @Autowired
     private MessageService messageService;
@@ -60,11 +58,11 @@ public class ArticleController {
     @RequestMapping("/article/{id}")
     public String detail(@PathVariable("id") Integer id, ModelMap map, HttpServletRequest request){
         Article art=articleService.findArticle(id);
-        //articleService.updateBrows(id);//è·Ÿæ–°æµè§ˆæ•°
+        //articleService.updateBrows(id);//¸úĞÂä¯ÀÀÊı
         if(!checkRepeatIp(request, art.getId())) {
             updateArticleViews(art.getId(),art.getBrowsNum());
         }
-        //æš‚æ—¶ä¸ä½¿ç”¨
+        //ÔİÊ±²»Ê¹ÓÃ
         /*Markdown markdown = new Markdown();
         try {
             StringWriter out = new StringWriter();
@@ -83,9 +81,9 @@ public class ArticleController {
     protected MapCache cache = MapCache.single();
 
     /**
-     * æ£€æµ‹åŒä¸€IPååˆ†é’Ÿä»¥å†…é‡å¤è®¿é—®åŒä¸€ç¯‡æ–‡ç« 
+     * ¼ì²âÍ¬Ò»IPÊ®·ÖÖÓÒÔÄÚÖØ¸´·ÃÎÊÍ¬Ò»ÆªÎÄÕÂ
      * @param request
-     * @param id æ–‡ç« id
+     * @param id ÎÄÕÂid
      * @return
      */
     public boolean checkRepeatIp(HttpServletRequest request, int id) {
@@ -100,7 +98,7 @@ public class ArticleController {
     }
 
     /**
-     * ä¿®æ”¹æ–‡ç« ç‚¹å‡»ç‡
+     * ĞŞ¸ÄÎÄÕÂµã»÷ÂÊ
      * @param id
      * @param views
      */
@@ -108,11 +106,11 @@ public class ArticleController {
         if (views == null) {
             views = 0L;
         }
-        //è·å–ç¼“å­˜æ•°æ®
+        //»ñÈ¡»º´æÊı¾İ
         Long cacheViews=cache.hget("article"+id, "cacheViews");
-        //å¦‚æœç¼“å­˜æ•°æ®ä¸ºnullèµ‹å€¼1ï¼Œåä¹‹åŠ 1
+        //Èç¹û»º´æÊı¾İÎªnull¸³Öµ1£¬·´Ö®¼Ó1
         cacheViews=cacheViews == null ? 1 : cacheViews+1;
-        //å¦‚æœç¼“å­˜åªå¤§äºç­‰äºè®¾ç½®çš„æ¬¡æ•°åˆ™ä¿®æ”¹åˆ°æ•°æ®åº“
+        //Èç¹û»º´æÖ»´óÓÚµÈÓÚÉèÖÃµÄ´ÎÊıÔòĞŞ¸Äµ½Êı¾İ¿â
         if(cacheViews>= CommonConst.CLICK_EXCEED) {
             Article article=new Article();
             article.setId(id);
@@ -125,7 +123,7 @@ public class ArticleController {
     }
 
     /**
-     * ç”¨äºå¾®ä¿¡å°ç¨‹åº
+     * ÓÃÓÚÎ¢ĞÅĞ¡³ÌĞò
      * @param id
      * @return
      */
@@ -133,7 +131,7 @@ public class ArticleController {
     @ResponseBody
     public Article wxDetail(@PathVariable("id") Integer id){
         Article art=articleService.findArticle(id);
-        articleService.updateBrows(id);//è·Ÿæ–°æµè§ˆæ•°
+        articleService.updateBrows(id);//¸úĞÂä¯ÀÀÊı
         return art;
     }
 
@@ -167,29 +165,30 @@ public class ArticleController {
         Map<String ,Object> result=new HashMap<String ,Object>();
 
 
-        // åˆ¤æ–­ request æ˜¯å¦æœ‰æ–‡ä»¶ä¸Šä¼ ,å³å¤šéƒ¨åˆ†è¯·æ±‚
+        // ÅĞ¶Ï request ÊÇ·ñÓĞÎÄ¼şÉÏ´«,¼´¶à²¿·ÖÇëÇó
         if (multipartResolver.isMultipart(request)) {
-            // è½¬æ¢æˆå¤šéƒ¨åˆ†request
+            // ×ª»»³É¶à²¿·Örequest
             MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-            // å–å¾—requestä¸­çš„æ‰€æœ‰æ–‡ä»¶å
+            // È¡µÃrequestÖĞµÄËùÓĞÎÄ¼şÃû
             Iterator<String> iter = multiRequest.getFileNames();
             while (iter.hasNext()) {
-                // å–å¾—ä¸Šä¼ æ–‡ä»¶
+                // È¡µÃÉÏ´«ÎÄ¼ş
                 MultipartFile f = multiRequest.getFile(iter.next());
                 if (f != null) {
-                    // å–å¾—å½“å‰ä¸Šä¼ æ–‡ä»¶çš„æ–‡ä»¶åç§°
+                    // È¡µÃµ±Ç°ÉÏ´«ÎÄ¼şµÄÎÄ¼şÃû³Æ
                     //String fileName = f.getOriginalFilename();
                     //OSSClientUtil ossClientUtil=new OSSClientUtil();
-                    //åé¢æ‰“å¼€ begin
-                    //å¯¹ä¸Šä¼ çš„å›¾ç‰‡è¿›è¡Œæ·»åŠ æ°´å°å†ä¸Šä¼ åˆ°OSS
+                    //ºóÃæ´ò¿ª begin
+                    //¶ÔÉÏ´«µÄÍ¼Æ¬½øĞĞÌí¼ÓË®Ó¡ÔÙÉÏ´«µ½OSS
                     MultipartFile waterFile= WordWaterMarker.addWorkMarkToMutipartFile(f,CommonConst.WATER_WORD);
-                    String name=ossClientUtil.uploadImg2Oss(waterFile);
-                    String imgUrl = ossClientUtil.getImgUrl(name);
+                     // ±¾µØÔËĞĞ×¢ÊÍÒÔÏÂÁ½ĞĞ  µÈÓĞ¿Õ ÔÙ°ÑÕâÒ»¶Î¹ØÓÚÎÄ¼şÉÏ´«µ½±¾µØ ÓëÔÆ´æ´¢ËµÃ÷Çå³ş
+                    //   String name=ossClientUtil.uploadImg2Oss(waterFile);
+                   //     String imgUrl = ossClientUtil.getImgUrl(name);
                    //end
 
-                    // å¦‚æœåç§°ä¸ä¸ºâ€œâ€,è¯´æ˜è¯¥æ–‡ä»¶å­˜åœ¨ï¼Œå¦åˆ™è¯´æ˜è¯¥æ–‡ä»¶ä¸å­˜åœ¨
+                    // Èç¹ûÃû³Æ²»Îª¡°¡±,ËµÃ÷¸ÃÎÄ¼ş´æÔÚ£¬·ñÔòËµÃ÷¸ÃÎÄ¼ş²»´æÔÚ
                     //if (fileName.trim() != "") {
-                    // å®šä¹‰ä¸Šä¼ è·¯å¾„
+                    // ¶¨ÒåÉÏ´«Â·¾¶
                        /* String path = "C:\\Users\\wuming\\Desktop\\"
                                 + myFileName;
                         File localFile = new File(path);
@@ -204,22 +203,22 @@ public class ArticleController {
                             targetFile.mkdirs();
                         }
 
-                        //ä¿å­˜
+                        //±£´æ
                         f.transferTo(targetFile);
                         result.put("success",1);
-                        result.put("message","ä¸Šä¼ æˆåŠŸ");
+                        result.put("message","ÉÏ´«³É¹¦");
                         //result.put("url", request.getContextPath() + "/upload/" + fileName);
                         result.put("url", "http://127.0.0.1:9090/blog-ssm/upload/" + fileName);*/
                     result.put("success",1);
-                    result.put("message","ä¸Šä¼ æˆåŠŸ");
+                    result.put("message","ÉÏ´«³É¹¦");
                     //result.put("url", "http://127.0.0.1:9090/blog-ssm/upload/" + fileName);
-                    result.put("url",imgUrl);
+                    //result.put("url",imgUrl);
                 }
             }
             //}
         }else{
             result.put("success",0);
-            result.put("message","ä¸Šä¼ å¤±è´¥");
+            result.put("message","ÉÏ´«Ê§°Ü");
         }
         //ossClientUtil.destory();
         System.out.println(result.toString());
@@ -256,16 +255,16 @@ public class ArticleController {
         //tagService.saveTags(article.getTags());
         if(flag){
             result.put("code",1);
-            result.put("msg","æ–°å¢æ–‡ç« æˆåŠŸ");
+            result.put("msg","ĞÂÔöÎÄÕÂ³É¹¦");
         }else{
             result.put("code",-1);
-            result.put("msg","å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç®¡ç†å‘˜");
+            result.put("msg","³öÏÖ´íÎó£¬ÇëÁªÏµ¹ÜÀíÔ±");
         }
         return result;
     }
 
   /**
-     * å…¨æ–‡æ£€ç´¢
+     * È«ÎÄ¼ìË÷
      * @param keyWord
      * @param pageIndex
      * @param model

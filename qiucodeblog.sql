@@ -42,7 +42,7 @@ CREATE TABLE `qiu_admin`  (
 -- ----------------------------
 -- Records of qiu_admin
 -- ----------------------------
-INSERT INTO `qiu_admin` VALUES (50, 'UUKHSDDI5KPA43A8VL06V0TU2', 'admin', 'https://www.sunmale.cn/static/common/images/face/8.jpg', '', 1, '超级管理员，拥有全部权限', 1505286093, 1524364786, NULL, NULL, NULL, 1, 1);
+INSERT INTO `qiu_admin` VALUES (50, 'bfc62b3f67a4c3e57df84dad8cc48a3b', 'admin', 'https://www.sunmale.cn/static/common/images/face/8.jpg', '', 1, '超级管理员，拥有全部权限', 1505286093, 1524364786, NULL, NULL, NULL, 1, 1);
 
 -- ----------------------------
 -- Table structure for qiu_article
